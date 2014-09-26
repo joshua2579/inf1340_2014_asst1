@@ -60,6 +60,7 @@ def grade_to_gpa(grade):
     elif type(grade) is int:
         # check that grade is in the accepted range
         if grade in range (0,101):
+            # convert the numeric grade to a letter grade
             if grade in range (90,101):
                 letter_grade = "A+"
             if grade in range (85,90):
@@ -78,9 +79,6 @@ def grade_to_gpa(grade):
         else:
             # raise a ValueError exception
             raise ValueError("Invalid numerical grade has been entered")
-        # convert the numeric grade to a letter grade
-        # assign the value to letter_grade
-        # hint: letter_grade = mark_to_letter(grade)
     else:
         # raise a TypeError exception
         raise TypeError("Invalid type passed as parameter")
