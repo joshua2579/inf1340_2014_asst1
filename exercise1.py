@@ -74,7 +74,7 @@ def grade_to_gpa(grade):
                 letter_grade = "B-"
             if grade in range (0,70):
                 letter_grade = "FZ"
-            gpa = letter_to_gpa(letter_grade)
+            gpa = letter_to_gpa(gpa, letter_grade)
         else:
             # raise a ValueError exception
             raise ValueError("Invalid numerical grade has been entered")
