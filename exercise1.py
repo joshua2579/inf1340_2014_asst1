@@ -55,7 +55,20 @@ def grade_to_gpa(grade):
     elif type(grade) is int:
         # check that grade is in the accepted range
         if grade in range (0,100):
-           # numeric_grade_dictionary = {}
+            if grade in range (90,100):
+                letter_grade = "A+"
+            if grade in range (85,89):
+                letter_grade = "A"
+            if grade in range (80,84):
+                letter_grade = "A-"
+            if grade in range (77,79):
+                letter_grade = "B+"
+            if grade in range (73,76):
+                letter_grade = "B"
+            if grade in range (70,72):
+                letter_grade = "B-"
+            if grade in range (0,69):
+                letter_grade = "FZ"
         else:
             # raise a ValueError exception
             raise ValueError("Invalid numerical grade has been entered")
