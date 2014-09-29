@@ -54,27 +54,23 @@ def grade_to_gpa(grade):
 
     letter_grade = ""
     gpa = 0.0
+    numeric_grade_list = [90, 85, 80, 77, 73, 70]
+    letter_grade_list = ["A+", "A", "A-", "B+", "B", "B-"]
 
     if type(grade) is str:
         gpa = letter_to_gpa(gpa, grade)
     elif type(grade) is int:
         # check that grade is in the accepted range
-        if grade in range (0,101):
-            if grade in range (90,101):
-                letter_grade = "A+"
-            if grade in range (85,90):
-                letter_grade = "A"
-            if grade in range (80,85):
-                letter_grade = "A-"
-            if grade in range (77,80):
-                letter_grade = "B+"
-            if grade in range (73,77):
-                letter_grade = "B"
-            if grade in range (70,73):
-                letter_grade = "B-"
-            if grade in range (0,70):
-                letter_grade = "FZ"
-            gpa = letter_to_gpa(letter_grade)
+        if grade in range(0,101):
+            loop_iterator = 0
+            letter_grade = "FZ"
+            for number in numeric_grade_list:
+                if (grade >= number):
+                    letter_grade = letter_grade_list[loop_iterator]
+                    break
+                else:
+                    loop_iterator += 1
+            gpa = letter_to_gpa(gpa, letter_grade)
         else:
             # raise a ValueError exception
             raise ValueError("Invalid numerical grade has been entered")
