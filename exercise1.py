@@ -22,12 +22,26 @@ __status__ = "Prototype"
 # imports one per line
 
 
-def letter_to_gpa(gpa, grade):
+def letter_to_gpa(letter_grade):
+    """
+    Returns the gpa for a given letter grade.
+
+    :params:
+        grade (integer): grade to be converted
+
+    :return:
+        float: The equivalent GPA
+            Value is 0.0-4.0
+
+    :raises:
+        ValueError if parameter is out of range
+    """
     letter_grade_dictionary = {"A+": 4.0, 'A': 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7, "FZ": 0.0}
+    gpa = 0.0
     # check that the grade is one of the accepted values
-    if grade in letter_grade_dictionary:
+    if letter_grade in letter_grade_dictionary:
         # assign grade to letter_grade
-        gpa = letter_grade_dictionary[grade]
+        gpa = letter_grade_dictionary[letter_grade]
     else:
         # raise a ValueError exception
         raise ValueError("Invalid letter grade has been entered")
@@ -58,7 +72,7 @@ def grade_to_gpa(grade):
     letter_grade_list = ["A+", "A", "A-", "B+", "B", "B-"]
 
     if type(grade) is str:
-        gpa = letter_to_gpa(gpa, grade)
+        gpa = letter_to_gpa(grade)
     elif type(grade) is int:
         # check that grade is in the accepted range
         if grade in range(0,101):
@@ -72,7 +86,7 @@ def grade_to_gpa(grade):
                 else:
                     loop_iterator += 1
             # assign value to GPA
-            gpa = letter_to_gpa(gpa, letter_grade)
+            gpa = letter_to_gpa(letter_grade)
         else:
             # raise a ValueError exception
             raise ValueError("Invalid numerical grade has been entered")
