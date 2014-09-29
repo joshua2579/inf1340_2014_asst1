@@ -66,25 +66,18 @@ def grade_to_gpa(grade):
             letter_grade = "FZ"
             for number in numeric_grade_list:
                 if (grade >= number):
+                    # convert the numeric grade to a letter grade
                     letter_grade = letter_grade_list[loop_iterator]
                     break
                 else:
                     loop_iterator += 1
+            # assign value to GPA
             gpa = letter_to_gpa(gpa, letter_grade)
         else:
             # raise a ValueError exception
             raise ValueError("Invalid numerical grade has been entered")
-        # convert the numeric grade to a letter grade
-        # assign the value to letter_grade
-        # hint: letter_grade = mark_to_letter(grade)
     else:
         # raise a TypeError exception
         raise TypeError("Invalid type passed as parameter")
-
-    # write a long if-statement to convert letter_grade
-    # assign the value to gpa
-#    if letter_grade == "A":
-#        gpa = 4.0
-
     return gpa
 
