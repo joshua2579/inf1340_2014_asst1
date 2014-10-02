@@ -26,7 +26,7 @@ def checksum (upc):
         Boolean: True, checksum is correct
         False, otherwise
     :raises:
-        TypeError if input is not a strong
+        TypeError if input is not a string
         ValueError if string is the wrong length (with error string stating how many digits are over or under
     """
 
@@ -34,7 +34,10 @@ def checksum (upc):
     # raise TypeError if not string
 
     # check length of string
-    # raise ValueError if not 12
+    upc = str(upc)
+    if len(upc) !=12:
+        # raise ValueError if not 12
+        raise ValueError ("Invalid UPC length")
 
     # convert string to array
     # hint: use the list function
