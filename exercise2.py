@@ -31,10 +31,11 @@ def checksum (upc):
     """
 
     # check type of input
-    # raise TypeError if not string
-
-    # check length of string
     upc = str(upc)
+    if upc != str(upc):
+        # raise TypeError if not string
+        raise TypeError ("Input must be a string")
+    # check length of string
     if len(upc) !=12:
         # raise ValueError if not 12
         raise ValueError ("Invalid UPC length")
