@@ -14,6 +14,7 @@ def decide_rps(player1, player2):
 
     :raises:
         ValueError if parameter is out of range
+        ValueError if inputs are invalid
     """
     input_dictionary = {"Rock": 0, "Paper": 1, "Scissors": 2}
     # Check that the inputs are valid
