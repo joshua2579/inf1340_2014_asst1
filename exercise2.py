@@ -55,7 +55,7 @@ def checksum(upc):
     else:
         checksum_digit = 0
     # check against the the twelfth digit
-    if upc[11] == checksum_digit:
+    if int(upc[11]) == checksum_digit:
         return True
     else:
         return False
