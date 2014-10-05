@@ -17,7 +17,7 @@ __status__ = "Prototype"
 # imports one per line
 
 
-def checksum (upc):
+def checksum(upc):
     """
     Checks if the digits in a UPC is consistent with checksum
 
@@ -31,22 +31,35 @@ def checksum (upc):
     """
 
     # check type of input
-    upc = str(upc)
-    if upc != str(upc):
+    type(upc)
+    if upc != str:
         # raise TypeError if not string
-        raise TypeError ("Input must be a string")
+        raise TypeError("Input must be a string")
     # check length of string
-    if len(upc) !=12:
+    if len(upc) != 12:
         # raise ValueError if not 12
-        raise ValueError ("Invalid UPC length")
-
-    # convert string to array
-    # hint: use the list function
-
+        raise ValueError("Invalid UPC length")
     # generate checksum using the first 11 digits provided
+    # add the odd digits together
+    else:
+        odd_digits = upc[0]+upc[2]+upc[4]+upc[6]+upc[8]+upc[10]
+        odd_sum = sum([int(x) for x in odd_digits])
+        # add the even digits together (12th digit not included)
+        even_digits = upc[1]+upc[3]+upc[5]+upc[7]+upc[9]
+        even_sum = sum([int(x) for x in even_digits])
+        # multiply the odd sum by 3 and add that to the even sum
+        total_sum = (odd_sum * 3) + even_sum
+        # find the total sum modulo 10
+        mod = total_sum % 10
+        # if the result is not 0, subtract the result from 10
+        checksum_digit = 10 - mod
+    if checksum_digit == 10:
+        checksum_digit = 0
     # check against the the twelfth digit
-
+    if upc[11] == checksum_digit:
+        return True
+    else:
+        return False
     # return True if they are equal, False otherwise
 
-    return False
 
