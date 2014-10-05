@@ -55,10 +55,10 @@ def checksum(upc):
     else:
         checksum_digit = 0
     # check against the the twelfth digit
+    # return True if they are equal, False otherwise
     if int(upc[11]) == checksum_digit:
         return True
     else:
         return False
-    # return True if they are equal, False otherwise
 
 
