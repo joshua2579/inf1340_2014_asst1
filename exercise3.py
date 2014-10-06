@@ -17,13 +17,14 @@ def decide_rps(player1, player2):
         TypeError if inputs are invalid
     """
     input_dictionary = {"Rock": 0, "Paper": 1, "Scissors": 2}
-    # Check that the inputs are valid
+    # Check that the inputs are strings
     if type(player1) is str and type(player2) is str:
         # Check that the inputs are in the dictionary
         if player1 in input_dictionary and player2 in input_dictionary:
             player1_input = input_dictionary[player1]
             player2_input = input_dictionary[player2]
 
+            # Determine the result
             result = player1_input - player2_input
 
             # The result is a tie.
