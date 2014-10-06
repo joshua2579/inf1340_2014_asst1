@@ -41,11 +41,18 @@ def checksum(upc):
 
     # generate checksum using the first 11 digits provided
     # add the odd digits together
-    odd_digits = [upc[0], upc[2], upc[4], upc[6], upc[8], upc[10]]
+
+
+#fortune2[::2] #Number of steps between elements
+#fortune2[1::3] #Every third character starting at 1
+
+
+
+    odd_digits = upc[::2]
     odd_sum = sum([int(x) for x in odd_digits])
 
     # add the even digits together (12th digit not included)
-    even_digits = [upc[1], upc[3], upc[5], upc[7], upc[9]]
+    even_digits = upc[1:-1:2]
     even_sum = sum([int(x) for x in even_digits])
 
     # multiply the odd sum by 3 and add that to the even sum
