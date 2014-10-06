@@ -55,7 +55,7 @@ def checksum(upc):
         if mod != 0:
             checksum_digit = 10 - mod
 
-        # check against the the twelth digit
+        # check against the twelfth digit
         # return True if they are equal, False otherwise
         if int(upc[11]) == checksum_digit:
             return True
