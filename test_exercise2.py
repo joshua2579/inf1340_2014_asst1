@@ -42,7 +42,3 @@ def test_input():
     with pytest.raises(ValueError):
         checksum("1")
         checksum("1234567890")
-
-    # other tests
-
-# add functions for any other tests

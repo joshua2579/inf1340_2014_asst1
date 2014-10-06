@@ -41,10 +41,12 @@ def checksum(upc):
     # generate checksum using the first 11 digits provided
     else:
         # add the odd digits together
-        odd_sum = sum([int(x) for x in upc[::2]])
+        odd_digits = upc[::2]
+        odd_sum = sum([int(x) for x in odd_digits])
 
         # add the even digits together (12th digit not included)
-        even_sum = sum([int(x) for x in upc[1:-1:2]])
+        even_digits = upc[1:-1:2]
+        even_sum = sum([int(x) for x in even_digits])
 
         # multiply the odd sum by 3, add that to the even sum and
         # find the modulo 10 of the result
@@ -55,9 +57,6 @@ def checksum(upc):
         if mod != 0:
             checksum_digit = 10 - mod
 
-        # check against the the twelth digit
+        # check against the the twelfth digit
         # return True if they are equal, False otherwise
-        if int(upc[11]) == checksum_digit:
-            return True
-        else:
-            return False
+        return int(upc[11]) == checksum_digit
