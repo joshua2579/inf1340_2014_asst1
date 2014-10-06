@@ -13,29 +13,32 @@ def decide_rps(player1, player2):
         int: the result of the game
 
     :raises:
-        ValueError if parameter is out of range
-        ValueError if inputs are invalid
+        ValueError if input is not accepted
+        TypeError if inputs are invalid
     """
     input_dictionary = {"Rock": 0, "Paper": 1, "Scissors": 2}
     # Check that the inputs are valid
-    if player1 in input_dictionary and player2 in input_dictionary:
-        player1_input = input_dictionary[player1]
-        player2_input = input_dictionary[player2]
+    if type(player1) is str and type(player2) is str:
+        # Check that the inputs are in the dictionary
+        if player1 in input_dictionary and player2 in input_dictionary:
+            player1_input = input_dictionary[player1]
+            player2_input = input_dictionary[player2]
 
-        result = player1_input - player2_input
+            result = player1_input - player2_input
 
-        # The result is a tie.
-        if result == 0:
-            return 0
-        # The result is that player 1 wins.
-        elif result == 1 or result == -2:
-            return 1
-        # The result is that player 2 wins.
-        elif result == -1 or result == 2:
-            return 2
-        # Some other result occurs.
+            # The result is a tie.
+            if result == 0:
+                return 0
+            # The result is that player 1 wins.
+            elif result == 1 or result == -2:
+                return 1
+            # The result is that player 2 wins.
+            elif result == -1 or result == 2:
+                return 2
         else:
-            raise TypeError("Invalid result occurred")
+            # raise a ValueError exception
+            raise ValueError("Invalid inputs provided.")
     else:
-        raise TypeError("Invalid inputs provided.")
+        # raise a TypeError exception
+        raise TypeError("Inputs must both be strings.")
 

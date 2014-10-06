@@ -28,7 +28,7 @@ def test_input():
         decide_rps("something", "else")
 
     with pytest.raises(TypeError):
-        decide_rps(2,"Sissors")
-        decide_rps("Roc", 2.09)
+        decide_rps(2,"Scissors")
+        decide_rps("Rock", 2.09)
         decide_rps(2.9876, 3.0987)
 

@@ -47,7 +47,7 @@ def checksum(upc):
     # add the even digits together (12th digit not included)
     even_digits = [upc[1], upc[3], upc[5], upc[7], upc[9]]
     even_sum = sum([int(x) for x in even_digits])
-    
+
     # multiply the odd sum by 3 and add that to the even sum
     total_sum = (odd_sum * 3) + even_sum
     # find the total sum modulo 10

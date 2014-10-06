@@ -71,15 +71,18 @@ def grade_to_gpa(grade):
     numeric_grade_list = [90, 85, 80, 77, 73, 70]
     letter_grade_list = ["A+", "A", "A-", "B+", "B", "B-"]
 
+    # Check that grade is of type string
     if type(grade) is str:
         gpa = letter_to_gpa(grade)
+    # Check that grade is of type int.
     elif type(grade) is int:
         # check that grade is in the accepted range
         if grade in range(0,101):
             loop_iterator = 0
             letter_grade = "FZ"
+            # Find the letter grade that corresponds to the given number
             for number in numeric_grade_list:
-                if (grade >= number):
+                if grade >= number:
                     # convert the numeric grade to a letter grade
                     letter_grade = letter_grade_list[loop_iterator]
                     break
