@@ -35,38 +35,29 @@ def checksum(upc):
         # raise TypeError if not string
         raise TypeError("Input must be a string")
     # check length of string
-    if len(upc) != 12:
+    elif len(upc) != 12:
         # raise ValueError if not 12
         raise ValueError("Invalid UPC length")
-
     # generate checksum using the first 11 digits provided
-    # add the odd digits together
-
-
-#fortune2[::2] #Number of steps between elements
-#fortune2[1::3] #Every third character starting at 1
-
-
-
-    odd_digits = upc[::2]
-    odd_sum = sum([int(x) for x in odd_digits])
-
-    # add the even digits together (12th digit not included)
-    even_digits = upc[1:-1:2]
-    even_sum = sum([int(x) for x in even_digits])
-
-    # multiply the odd sum by 3 and add that to the even sum
-    total_sum = (odd_sum * 3) + even_sum
-    # find the total sum modulo 10
-    mod = total_sum % 10
-    # if the result is not 0, subtract the result from 10
-    if mod != 0:
-        checksum_digit = 10 - mod
     else:
+        # add the odd digits together
+        odd_sum = sum([int(x) for x in upc[::2]])
+
+        # add the even digits together (12th digit not included)
+        even_sum = sum([int(x) for x in upc[1:-1:2]])
+
+        # multiply the odd sum by 3, add that to the even sum and
+        # find the modulo 10 of the result
+        mod = ((odd_sum * 3) + even_sum) % 10
+
+        # if the result is not 0, subtract the result from 10
         checksum_digit = 0
-    # check against the the twelfth digit
-    # return True if they are equal, False otherwise
-    if int(upc[11]) == checksum_digit:
-        return True
-    else:
-        return False
+        if mod != 0:
+            checksum_digit = 10 - mod
+
+        # check against the the twelth digit
+        # return True if they are equal, False otherwise
+        if int(upc[11]) == checksum_digit:
+            return True
+        else:
+            return False
